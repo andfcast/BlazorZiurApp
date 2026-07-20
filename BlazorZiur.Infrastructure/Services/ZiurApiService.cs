@@ -12,6 +12,7 @@ namespace BlazorZiur.Infrastructure.Services
     public class ZiurApiService : IZiurApiService
     {
         private readonly HttpClient _httpClient;
+        private readonly string GetDocumentosCombosEndpoint = "DocumentosFillsCombos";
 
         public ZiurApiService(IHttpClientFactory httpClientFactory)
         {
@@ -22,7 +23,7 @@ namespace BlazorZiur.Infrastructure.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("DocumentosFillsCombos");
+                var response = await _httpClient.GetAsync(GetDocumentosCombosEndpoint);
                 response.EnsureSuccessStatusCode();
 
                 var result = await response.Content.ReadFromJsonAsync<List<Documento>>();
@@ -31,7 +32,7 @@ namespace BlazorZiur.Infrastructure.Services
             catch (Exception ex)
             {
                 // Loguear el error de infraestructura
-                Console.WriteLine($"[Infrastructure Error]: {ex.Message}");
+                Console.WriteLine($"[Error en capa Infrastructure]: {ex.Message}");
                 return new List<Documento>();
             }
         }

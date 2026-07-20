@@ -22,17 +22,14 @@ namespace BlazorZiur.Application.Services
         /// </summary>
         public async Task<List<Documento>> GetDocumentosParaGrillaAsync()
         {
-            // 1. Traer los datos crudos de la infraestructura
+            //Traer los datos sin procesar de la infraestructura
             var datosCrudos = await _apiService.GetDocumentosCombosAsync();
 
-            // 2. APLICAR LÓGICA DE NEGOCIO DE LA APLICACIÓN
-            // Regla: Filtrar solo los registros válidos para operar y ordenarlos por descripción
+            // Filtrar solo los registros válidos para operar y ordenarlos por descripción
             var datosProcesados = datosCrudos
                 .Where(doc => doc.EsValidoParaOperar)
                 .OrderBy(doc => doc.Descripcion)
                 .ToList();
-
-            // Regla adicional simulada: Si no hay datos, podrías disparar una alerta de negocio
             return datosProcesados;
         }
     }

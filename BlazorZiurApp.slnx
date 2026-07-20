@@ -1,6 +1,12 @@
 <Solution>
-  <Project Path="BlazorZiur.Application/BlazorZiur.Application.csproj" Id="cdf82eac-e23d-4548-8199-45f564a4afff" />
-  <Project Path="BlazorZiur.Domain/BlazorZiur.Domain.csproj" Id="9b9b03ec-b08a-4d75-ab3c-4e0d8635657e" />
-  <Project Path="BlazorZiur.Infrastructure/BlazorZiur.Infrastructure.csproj" Id="ba69ca22-09f9-4a3a-9bf3-a1760fe38b05" />
+  <Folder Name="/Application/">
+    <Project Path="BlazorZiur.Application/BlazorZiur.Application.csproj" Id="cdf82eac-e23d-4548-8199-45f564a4afff" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="BlazorZiur.Domain/BlazorZiur.Domain.csproj" Id="9b9b03ec-b08a-4d75-ab3c-4e0d8635657e" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="BlazorZiur.Infrastructure/BlazorZiur.Infrastructure.csproj" Id="ba69ca22-09f9-4a3a-9bf3-a1760fe38b05" />
+  </Folder>
   <Project Path="BlazorZiurApp/BlazorZiurApp.csproj" />
 </Solution>
