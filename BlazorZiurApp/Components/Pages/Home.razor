@@ -1,0 +1,52 @@
+﻿@page "/"
+
+@using BlazorZiur.Domain.Entities
+@using BlazorZiur.Application.Interfaces
+@inject IZiurApiService ApiService
+
+<PageTitle>Documentos</PageTitle>
+
+<div class="container mt-4">
+    <h2>Listado de Documentos</h2>
+
+    @if (documentos == null)
+    {
+        <p>Cargando...</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in documentos)
+                {
+                    <tr>
+                        <td>@item.Codigo</td>
+                        <td>@item.Descripcion</td>
+                        <td>
+                            <span class="badge @(item.VActiva ? "bg-success" : "bg-secondary")">
+                                @(item.VActiva ? "Sí" : "No")
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private List<Documento>? documentos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // UI llama a la interfaz, abstrayéndose de la infraestructura
+        documentos = await ApiService.GetDocumentosCombosAsync();
+    }
+}
